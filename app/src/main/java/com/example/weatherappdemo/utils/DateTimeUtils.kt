@@ -12,16 +12,16 @@ object DateTimeUtils {
     /*
     * Return time from millis
     */
-    fun getTimeFromMillis(toLong: Long?): String? {
-        return if (toLong == null) null else SimpleDateFormat(DEFAULT_FORMAT).format(toLong * 1000)
+    fun getTimeFromMillis(seconds: Long?): String? {
+        return if (seconds == null || seconds == 0L) null else SimpleDateFormat(DEFAULT_FORMAT).format(seconds * 1000)
     }
 
     /*
     * Return Day from millis, like Monday/Tuesday etc.
     */
-    fun getDayOfWeekFromMillis(millis:Long):String{
+    fun getDayOfWeekFromMillis(millis: Long): String {
         val sdf = SimpleDateFormat("EEEE", Locale.getDefault())
-        val date = Date(millis*1000)
+        val date = Date(millis * 1000)
         return sdf.format(date)
     }
 
