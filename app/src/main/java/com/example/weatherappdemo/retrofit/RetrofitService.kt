@@ -1,4 +1,4 @@
-package com.example.demoappkissan.retrofit
+package com.example.weatherappdemo.retrofit
 
 import com.example.weatherappdemo.model.PojoCurrentWeather
 import com.example.weatherappdemo.model.PojoWeatherForecast
@@ -17,10 +17,9 @@ interface RetrofitService {
 
 
     @GET("forecast")
-    fun getSevenDaysWeatherForecast(
+    suspend fun getSevenDaysWeatherForecast(
         @Query("q") q: String,
         @Query("units") units: String,
-        @Query("cnt") daysToForecast: Int,
         @Query("appid") appId: String
         ): Response<PojoWeatherForecast>
 

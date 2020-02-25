@@ -71,6 +71,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
 
+    //Lottie
+    implementation 'com.airbnb.android:lottie:3.0.7'
+
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'

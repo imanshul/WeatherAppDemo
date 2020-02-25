@@ -1,5 +1,4 @@
-package com.example.demoappkissan.retrofit
-
+package com.example.weatherappdemo.retrofit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,8 +23,4 @@ object RetrofitFactory {
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(RetrofitService::class.java)
     }
-}
-
-fun getRetrofit(): RetrofitService {
-    return RetrofitFactory.makeRetrofitService()
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    android:layout_marginTop="8dp"
+    app:cardBackgroundColor="@color/subCard"
+    app:layout_constraintTop_toBottomOf="@id/tvSunriseTime"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    >
+
+    <TextView
+        android:id="@+id/textDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        android:textSize="18dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textRealFeel"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textDetails"
+        app:layout_constraintEnd_toStartOf="@id/textWind"
+        android:text="Real Feel (Celsius)"
+        android:textSize="12sp"
+        android:textColor="@color/textGrey"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textWind"
+        app:layout_constraintStart_toEndOf="@id/textRealFeel"
+        app:layout_constraintTop_toTopOf="@id/textRealFeel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Wind"
+        android:textColor="@color/textGrey"
+        android:textSize="12sp"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvRealFeel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textRealFeel"
+        app:layout_constraintEnd_toStartOf="@id/tvWind"
+        android:text="10"
+        android:textColor="@android:color/white"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvWind"
+        app:layout_constraintStart_toEndOf="@id/tvRealFeel"
+        app:layout_constraintTop_toBottomOf="@id/textRealFeel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="2.45 Km/hr"
+        android:textColor="@android:color/white"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textCloudiness"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRealFeel"
+        app:layout_constraintEnd_toStartOf="@id/textHumidity"
+        android:text="Cloudiness"
+        android:textSize="12sp"
+        android:textColor="@color/textGrey"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textHumidity"
+        app:layout_constraintStart_toEndOf="@id/textCloudiness"
+        app:layout_constraintTop_toTopOf="@id/textCloudiness"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Humidity"
+        android:textColor="@color/textGrey"
+        android:textSize="12sp"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvCloudiness"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textCloudiness"
+        app:layout_constraintEnd_toStartOf="@id/tvHumidity"
+        android:text="10"
+        android:textColor="@android:color/white"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvHumidity"
+        app:layout_constraintStart_toEndOf="@id/tvCloudiness"
+        app:layout_constraintTop_toBottomOf="@id/textCloudiness"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="2.45 Km/hr"
+        android:textColor="@android:color/white"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

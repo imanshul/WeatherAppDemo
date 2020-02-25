@@ -1,4 +1,5 @@
 package com.example.weatherappdemo.model
+
 import com.google.gson.annotations.SerializedName
 
 
@@ -10,7 +11,7 @@ data class PojoWeatherForecast(
     @SerializedName("cod")
     var cod: String? = null,
     @SerializedName("list")
-    var list: List<X?>? = null,
+    var listForecastData: List<ListForecastData>? = null,
     @SerializedName("message")
     var message: Int? = null
 )
@@ -41,11 +42,11 @@ data class Coord(
     var lon: Double? = null
 )
 
-data class X(
+data class ListForecastData(
     @SerializedName("clouds")
     var clouds: Clouds? = null,
     @SerializedName("dt")
-    var dt: Int? = null,
+    var dt: Long? = null,
     @SerializedName("dt_txt")
     var dtTxt: String? = null,
     @SerializedName("main")
@@ -86,7 +87,13 @@ data class Main(
 
 data class Sys(
     @SerializedName("pod")
-    var pod: String? = null
+    var pod: String? = null,
+    @SerializedName("country")
+    var country: String? = null,
+    @SerializedName("sunrise")
+    var sunrise: Long? = null,
+    @SerializedName("sunset")
+    var sunset: Long? = null
 )
 
 data class Weather(
