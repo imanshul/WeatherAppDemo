@@ -3,7 +3,7 @@ An app to get current Weather data using openweathermap API.
 
 Features
 1. MVVM as Framework.
-2  Retrofit with coroutines.
+2. Retrofit with coroutines.
 3. JUnit test cases to test DateTimeUtils file.
 4. Unit test using espresso to check views on different scenarios.
 5. Sorted list of 5days/3hour forecast data from openweather API (40 items) to show only 5 days forecast along with current weather.
