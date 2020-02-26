@@ -1,6 +1,5 @@
 package com.example.weatherappdemo.retrofit
 
-import com.example.weatherappdemo.model.PojoCurrentWeather
 import com.example.weatherappdemo.model.PojoWeatherForecast
 import retrofit2.Response
 import retrofit2.http.GET

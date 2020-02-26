@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherappdemo.R
 import com.example.weatherappdemo.extensions.showMessage
 import com.example.weatherappdemo.model.ListForecastData
-import com.example.weatherappdemo.model.PojoCurrentWeather
 import com.example.weatherappdemo.utils.AnimationUtils
 import com.example.weatherappdemo.utils.DateTimeUtils
 import com.example.weatherappdemo.utils.InternetCheckUtils
