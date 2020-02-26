@@ -28,9 +28,9 @@ data class City(
     @SerializedName("population")
     var population: Int? = null,
     @SerializedName("sunrise")
-    var sunrise: Int? = null,
+    var sunrise: Long? = null,
     @SerializedName("sunset")
-    var sunset: Int? = null,
+    var sunset: Long? = null,
     @SerializedName("timezone")
     var timezone: Int? = null
 )
@@ -68,17 +68,17 @@ data class Main(
     @SerializedName("feels_like")
     var feelsLike: Double? = null,
     @SerializedName("grnd_level")
-    var grndLevel: Int? = null,
+    var grndLevel: Double? = null,
     @SerializedName("humidity")
-    var humidity: Int? = null,
+    var humidity: Double? = null,
     @SerializedName("pressure")
-    var pressure: Int? = null,
+    var pressure: Double? = null,
     @SerializedName("sea_level")
-    var seaLevel: Int? = null,
+    var seaLevel: Double? = null,
     @SerializedName("temp")
     var temp: Double? = null,
     @SerializedName("temp_kf")
-    var tempKf: Int? = null,
+    var tempKf: Double? = null,
     @SerializedName("temp_max")
     var tempMax: Double? = null,
     @SerializedName("temp_min")
@@ -109,7 +109,7 @@ data class Weather(
 
 data class Wind(
     @SerializedName("deg")
-    var deg: Int? = null,
+    var deg: Double? = null,
     @SerializedName("speed")
     var speed: Double? = null
 )

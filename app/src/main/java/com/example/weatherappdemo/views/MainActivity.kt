@@ -28,7 +28,7 @@ import java.util.Calendar.getInstance
 import kotlin.collections.ArrayList
 
 
-class MainActivity : AppCompatActivity(), OnItemClick {
+class MainActivity : AppCompatActivity(), OnItemClick, View.OnClickListener {
 
     var viewModel: WeatherViewModel? = null
 
@@ -40,9 +40,10 @@ class MainActivity : AppCompatActivity(), OnItemClick {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        hideRetryView()
+        //hideRetryView()
         setAdapter()
         addObserver()
+        setClicks()
     }
 
     private fun setAdapter() {
@@ -57,45 +58,48 @@ class MainActivity : AppCompatActivity(), OnItemClick {
 
         getWeatherData()
 
-        viewModel?.getCurrentWeatherLiveData()?.observe(this, Observer {
-            hideRetryView()
-            setCurrentWeatherData(it)
-        })
-
-        viewModel?.getCurrentWeatherErrorLiveData()?.observe(this, Observer {
-            showMessage(this, "Error : $it")
-            showRetryView()
-        })
-
         viewModel?.getWeatherForecastLiveData()?.observe(this, Observer {
-            it?.apply {
-                val list = get5DayForecast(this.listForecastData)
+            hideRetryView()
+            tvCurrentLocation.text = "${getString(R.string.location)} ${it.city?.name}"
+            tvSunriseTime.text = DateTimeUtils.getTimeFromMillis(it.city?.sunrise) ?: ""
+            tvSunsetTime.text = DateTimeUtils.getTimeFromMillis(it.city?.sunset) ?: ""
+            adapter.clearData()
+            it.listForecastData?.apply {
+                setCurrentWeatherData(this.first())
+                val list = get5DayForecast(this)
                 adapter.addData(list)
+                //to animate recycler view items
+                rvWeatherForecast.scheduleLayoutAnimation()
             }
         })
 
         viewModel?.getWeatherForecastErrorLiveData()?.observe(this, Observer {
             showMessage(this, "Error : $it")
+            adapter.clearData()
+            showRetryView()
         })
 
     }
 
     private fun showRetryView() {
+        btnRetry.visibility = View.VISIBLE
+        pbProgress.visibility = View.GONE
         tvCurrentLocation.visibility = View.GONE
-        cardRetry.visibility = View.VISIBLE
+        clNoData.visibility = View.VISIBLE
         clCurrentWeather.visibility = View.GONE
     }
 
     private fun hideRetryView() {
         tvCurrentLocation.visibility = View.VISIBLE
-        cardRetry.visibility = View.GONE
+        clNoData.visibility = View.GONE
         clCurrentWeather.visibility = View.VISIBLE
     }
 
 
     private fun getWeatherData() {
         if (InternetCheckUtils.isNetworkAvailable(this)) {
-            viewModel?.getCurrentWeather(stringToSearch)
+            btnRetry.visibility = View.GONE
+            pbProgress.visibility = View.VISIBLE
             viewModel?.getWeatherForecast(stringToSearch)
         } else {
             showMessage(this, "No Internet Available!")
@@ -110,7 +114,6 @@ class MainActivity : AppCompatActivity(), OnItemClick {
         searchView.queryHint = getString(R.string.search)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                //   viewModel?.getCurrentWeather(query.toString())MenuItemCompat.collapseActionView(searchMenuItem);
                 stringToSearch = query.toString()
                 getWeatherData()
                 searchViewItem.collapseActionView()
@@ -126,13 +129,10 @@ class MainActivity : AppCompatActivity(), OnItemClick {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setCurrentWeatherData(it: PojoCurrentWeather?) {
-        it?.apply {
-            tvCurrentLocation.text = "${getString(R.string.location)} $name"
+    private fun setCurrentWeatherData(it: ListForecastData) {
+        it.apply {
             tvCurrentTemp.text = main?.temp?.toInt().toString()
             tvWeatherDescription.text = weather?.get(0)?.main ?: ""
-            tvSunriseTime.text = DateTimeUtils.getTimeFromMillis(sys?.sunrise) ?: ""
-            tvSunsetTime.text = DateTimeUtils.getTimeFromMillis(sys?.sunset) ?: ""
             tvRealFeel.text = main?.feelsLike?.toInt().toString()
             tvCloudiness.text = "${clouds?.all}%"
             tvHumidity.text = "${main?.humidity}%"
@@ -152,10 +152,22 @@ class MainActivity : AppCompatActivity(), OnItemClick {
         }
     }
 
+    fun setClicks() {
+        btnRetry.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            btnRetry -> {
+                getWeatherData()
+            }
+        }
+    }
+
     /*
-    * Search for 5 days forecast from 3hour forecast for 5 days
-    * */
-    private fun get5DayForecast(listForecastData: List<ListForecastData>?): List<ListForecastData> {
+        * Search for 5 days forecast from 3hour forecast for 5 days
+        * */
+    private fun get5DayForecast(listForecastData: List<ListForecastData>): List<ListForecastData> {
         val list = ArrayList<ListForecastData>()
         //Get current cal instance
         val futureCal = getInstance()
@@ -165,7 +177,7 @@ class MainActivity : AppCompatActivity(), OnItemClick {
         /*
         * Loop list to get only future 5 days data
         * */
-        listForecastData?.forEach {
+        listForecastData.forEach {
             val cal: Calendar = getInstance()
             cal.setTimeInMillis(it.dt!! * 1000)
 

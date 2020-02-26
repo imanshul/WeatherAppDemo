@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:minWidth="100dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="8dp"
@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minWidth="80dp"
         android:layout_gravity="center"
         android:layout_margin="8dp">
 
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            android:text=""
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,19 +42,19 @@
 
         <ImageView
             android:id="@+id/imgMin"
-            android:layout_width="wrap_content"
+            android:layout_width="14dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:src="@android:drawable/arrow_down_float"
+            android:src="@drawable/ic_arrow_downward_white_24dp"
             app:layout_constraintEnd_toStartOf="@+id/imgMax"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDayTemp" />
 
         <ImageView
             android:id="@+id/imgMax"
-            android:layout_width="wrap_content"
+            android:layout_width="14dp"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/arrow_up_float"
+            android:src="@drawable/ic_arrow_upward_white_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgMin"
             app:layout_constraintTop_toTopOf="@id/imgMin" />

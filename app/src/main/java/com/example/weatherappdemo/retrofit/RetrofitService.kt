@@ -7,17 +7,12 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RetrofitService {
-
-    @GET("weather")
-    suspend fun getCurrentWeather(
-        @Query("q") query: String,
-        @Query("units") units: String,
-        @Query("appid") appid: String
-    ): Response<PojoCurrentWeather>
-
+    /*
+    * To get 6 days forecast including current
+    * */
 
     @GET("forecast")
-    suspend fun getSevenDaysWeatherForecast(
+    suspend fun getSixDaysWeatherForecast(
         @Query("q") q: String,
         @Query("units") units: String,
         @Query("appid") appId: String

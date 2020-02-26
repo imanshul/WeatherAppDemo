@@ -18,6 +18,8 @@
             android:gravity="center"
             android:paddingBottom="8dp"
             android:text="@string/location"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:textColor="@color/mainCard"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/clCurrentWeather"
+                android:visibility="gone"
                 android:padding="12dp">
 
                 <RelativeLayout
@@ -165,6 +168,7 @@
             android:id="@+id/rvWeatherForecast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutAnimation="@anim/layout_animation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

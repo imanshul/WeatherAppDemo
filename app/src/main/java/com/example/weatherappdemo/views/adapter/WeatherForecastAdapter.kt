@@ -25,6 +25,11 @@ class WeatherForecastAdapter(callback: OnItemClick) : RecyclerView.Adapter<Recyc
         notifyDataSetChanged()
     }
 
+    fun clearData(){
+        list.clear()
+        notifyDataSetChanged()
+    }
+
     override fun getItemViewType(position: Int): Int {
         if (list.size == 0) {
             return EMPTY_VIEW
@@ -73,7 +78,7 @@ class WeatherForecastAdapter(callback: OnItemClick) : RecyclerView.Adapter<Recyc
         fun bindData(data: ListForecastData) {
             itemView.apply {
                 tvDay.text = DateTimeUtils.getDayOfWeekFromMillis(data.dt!!)
-                tvDayTemp.text = data.main?.temp?.toInt().toString()
+                tvDayTemp.text = "${data.main?.temp?.toInt()} \u00B0"
                 tvMin.text = data.main?.tempMin?.roundToInt().toString()
                 tvMax.text = data.main?.tempMax?.roundToInt().toString()
             }
