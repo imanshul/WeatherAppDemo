@@ -7,7 +7,7 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/tvNoItem"
+        android:id="@+id/tvRetryMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -27,7 +27,7 @@
         android:text="Retry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNoItem" />
+        app:layout_constraintTop_toBottomOf="@id/tvRetryMessage" />
 
     <ProgressBar
         android:layout_width="wrap_content"
